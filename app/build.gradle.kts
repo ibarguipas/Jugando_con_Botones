@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.jugando_con_botones"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.jugando_con_botones"
