@@ -20,11 +20,18 @@ class MainActivity : AppCompatActivity() {
         val lp = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT, resources.getDimensionPixelSize(R.dimen.button_height)
         )
+
+        val botonNotificacionDistinta = (0 until numBotones).random()
+
         for (i in 0 until numBotones) {
             val button = Button(this)
             button.layoutParams = lp
             button.text = "Botón " + String.format("%02d", i)
-            button.setOnClickListener(buttonClickListener(i))
+            button.setOnClickListener(if (i == botonNotificacionDistinta){
+                buttonClickListenerDistinto(i)
+            } else {
+                buttonClickListener(i)
+            })
             llBotonera.addView(button)
         }
     }
@@ -34,6 +41,16 @@ class MainActivity : AppCompatActivity() {
         return  View.OnClickListener {
             Toast.makeText(this@MainActivity,
                 "Botón " + String.format("%02d", index) + " pulsado.", Toast.LENGTH_SHORT).show()
+
+        }
+
+    }
+
+    private fun buttonClickListenerDistinto(index: Int): View.OnClickListener {
+
+        return  View.OnClickListener {
+            Toast.makeText(this@MainActivity,
+                "Me encontraste.", Toast.LENGTH_SHORT).show()
 
         }
 
